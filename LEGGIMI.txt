@@ -1,0 +1,4 @@
+DRIIIN MUSEUM V16 — Sezione bianca QUANTE COSE.
+Carica nella cartella principale del repository index.html e TUTTI i file v16-*.png.
+Non eliminare catalog.js, le immagini art-*.webp o il file audio.
+I 13 doodle sono estratti dalle immagini originali fornite in chat; i movimenti sono lenti, indipendenti e si disattivano se il dispositivo richiede movimento ridotto.

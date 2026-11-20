@@ -421,6 +421,74 @@ dialog.detail .close { position:absolute !important; top:calc(env(safe-area-inse
  #driiin-opening .v14-beam,#home.v14-home .v14-halo,#home.v14-home .v14-streak {animation:none !important}
  #home.v14-home .v14-halo {opacity:.5}
 }
+
+/* DRIIIN V15 — original ink fragments, white gallery / mobile-first */
+#world.intro{background:#fff!important;min-height:clamp(720px,92svh,1020px)!important;padding:clamp(110px,15vh,180px) 8vw 135px!important;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;overflow:hidden!important}
+#world.intro .v15-inkfield{position:absolute!important;inset:0!important;overflow:hidden!important;z-index:0!important;transform:translate3d(0,var(--driiin-world-shift,0px),0);pointer-events:none}
+#world.intro .v15-ink{position:absolute;display:block;width:var(--w);aspect-ratio:var(--ratio,1);opacity:var(--alpha,.86);transform-origin:center;animation:v15Drift var(--duration,16s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);will-change:transform;filter:contrast(1.13);mix-blend-mode:multiply}
+#world.intro .v15-ink img{display:block;width:100%;height:100%;object-fit:contain;filter:none;mix-blend-mode:normal;transform:none!important;transition:none!important}
+#world.intro .v15-ink-1{--w:clamp(120px,18vw,270px);--ratio:321/580;--duration:19s;--delay:-6s;left:-2%;top:6%;--rot:-10deg;--dx:26px;--dy:36px}
+#world.intro .v15-ink-2{--w:clamp(110px,15vw,210px);--ratio:279/580;--duration:23s;--delay:-14s;right:4%;top:-13%;--rot:8deg;--dx:-18px;--dy:45px}
+#world.intro .v15-ink-3{--w:clamp(160px,23vw,350px);--ratio:425/320;--duration:17s;--delay:-9s;right:-6%;bottom:3%;--rot:10deg;--dx:-31px;--dy:-26px}
+#world.intro .v15-ink-4{--w:clamp(140px,19vw,285px);--ratio:420/375;--duration:21s;--delay:-3s;left:3%;bottom:-12%;--rot:-12deg;--dx:21px;--dy:-42px}
+#world.intro .v15-ink-5{--w:clamp(75px,10vw,130px);--ratio:279/580;--duration:26s;--delay:-18s;right:28%;bottom:-13%;--rot:17deg;--dx:-19px;--dy:-22px;--alpha:.56}
+#world.intro .v15-ink-6{--w:clamp(90px,12vw,160px);--ratio:425/320;--duration:24s;--delay:-11s;left:27%;top:-7%;--rot:-16deg;--dx:14px;--dy:30px;--alpha:.55}
+#world.intro .v15-ink-7{--w:clamp(65px,9vw,120px);--ratio:321/580;--duration:28s;--delay:-22s;right:-4%;top:35%;--rot:13deg;--dx:-20px;--dy:18px;--alpha:.52}
+#world.intro>.eyebrow,#world.intro>h2,#world.intro>p,#world.intro>.manifest{position:relative!important;z-index:3!important}
+#world.intro>h2{font-size:clamp(80px,12vw,170px);line-height:.83;letter-spacing:-.095em;margin:33px 0 35px;max-width:800px}
+#world.intro>p{max-width:530px;font-size:clamp(17px,2vw,23px);line-height:1.6;background:#fffffff0!important;padding:7px 12px 7px 0}
+#world.intro .manifest{background:transparent!important}
+@keyframes v15Drift{0%{transform:translate3d(0,0,0) rotate(calc(var(--rot) - 3deg)) scale(.97)}50%{transform:translate3d(calc(var(--dx)*.55),calc(var(--dy)*.35),0) rotate(var(--rot)) scale(1.02)}100%{transform:translate3d(var(--dx),var(--dy),0) rotate(calc(var(--rot) + 3deg)) scale(.98)}}
+@media(max-width:700px){
+ #world.intro{min-height:760px!important;padding:150px 7vw 155px!important;justify-content:center}
+ #world.intro>h2{font-size:clamp(68px,16vw,108px);margin:25px 0 30px}
+ #world.intro>p{max-width:86%;font-size:17px;line-height:1.5}
+ #world.intro .v15-ink-1{--w:125px;left:-53px;top:10%}
+ #world.intro .v15-ink-2{--w:112px;right:-40px;top:-11%}
+ #world.intro .v15-ink-3{--w:175px;right:-76px;bottom:4%}
+ #world.intro .v15-ink-4{--w:165px;left:-62px;bottom:-8%}
+ #world.intro .v15-ink-5{--w:75px;right:18%;bottom:-10%}
+ #world.intro .v15-ink-6{--w:100px;left:38%;top:-10%}
+ #world.intro .v15-ink-7{display:none}
+}
+@media(prefers-reduced-motion:reduce){#world.intro .v15-ink{animation:none!important;transform:rotate(var(--rot))!important;will-change:auto}}
+
+/* V16 — DRIIIN original drawings, independent drifting on pure white */
+#world.intro { background:#fff !important; min-height:900px !important; overflow:hidden !important; }
+#world.intro .v16-inkfield {position:absolute !important;inset:0 !important;z-index:1 !important;overflow:hidden !important;pointer-events:none !important;transform:none !important;}
+#world.intro .v16-doodle {position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;max-width:32vw;opacity:.93;will-change:transform;animation:v16Drift var(--dur) ease-in-out var(--delay) infinite alternate;transform-origin:center;}
+#world.intro .v16-doodle img {display:block;width:100%;height:auto;object-fit:contain;filter:none !important;mix-blend-mode:normal !important;transform:none !important;}
+#world.intro > :not(.driiin-doodles) {position:relative !important;z-index:3 !important;}
+#world.intro .eyebrow,#world.intro h2,#world.intro p,#world.intro .manifest {text-shadow:none !important;}
+#world.intro p {max-width:570px;position:relative;background:transparent !important;}
+@keyframes v16Drift {
+  0% {transform:translate3d(calc(var(--dx)*-.6),calc(var(--dy)*-.7),0) rotate(calc(var(--rot) - 4deg));}
+  34% {transform:translate3d(calc(var(--dx)*.35),calc(var(--dy)*-.4),0) rotate(calc(var(--rot) + 2deg));}
+  68% {transform:translate3d(calc(var(--dx)*-.45),calc(var(--dy)*.7),0) rotate(calc(var(--rot) - 2deg));}
+  100% {transform:translate3d(var(--dx),var(--dy),0) rotate(calc(var(--rot) + 5deg));}
+}
+@media (max-width:700px) {
+ #world.intro {min-height:880px !important;padding-top:125px !important;}
+ #world.intro h2 {font-size:clamp(62px,16vw,105px) !important;}
+ #world.intro p {max-width:88%;background:#ffffffd9 !important;}
+ #world.intro .v16-doodle {width:calc(var(--w)*.65);max-width:30vw;opacity:.85;}
+ #world.intro .v16-doodle-1 {left:75%;top:5%;}
+ #world.intro .v16-doodle-2 {left:84%;top:77%;}
+ #world.intro .v16-doodle-3 {left:61%;top:2%;}
+ #world.intro .v16-doodle-4 {left:78%;top:52%;}
+ #world.intro .v16-doodle-5 {left:-4%;top:76%;}
+ #world.intro .v16-doodle-6 {left:36%;top:91%;}
+ #world.intro .v16-doodle-7 {left:61%;top:72%;}
+ #world.intro .v16-doodle-8 {left:88%;top:28%;}
+ #world.intro .v16-doodle-9 {left:11%;top:2%;}
+ #world.intro .v16-doodle-10 {left:2%;top:94%;}
+ #world.intro .v16-doodle-11 {left:38%;top:77%;}
+ #world.intro .v16-doodle-12 {left:72%;top:95%;}
+ #world.intro .v16-doodle-13 {left:94%;top:93%;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #world.intro .v16-doodle {animation:none !important;transform:rotate(var(--rot)) !important;}
+}
 </style></head><body><div id="driiin-opening" role="presentation"><div class="opening-grain"></div>
 <div class="v14-lightfield" aria-hidden="true">
   <div class="v14-beam beam-a"><img src="art-01.webp" alt=""></div>
@@ -437,7 +505,7 @@ dialog.detail .close { position:absolute !important; top:calc(env(safe-area-inse
   <a class="enter" id="enter" href="#museum" data-t="enter">ENTER THE MUSEUM ↗</a>
 </div>
 <div class="bottom">DRIIIN / 001 <span>SCROLL TO EXPLORE ↓</span></div>
-</section><section id="world" class="intro"><div class="driiin-doodles" aria-hidden="true"><img src="driiin-doodle-1.png" class="driiin-doodle doodle-1" alt="" loading="lazy"><img src="driiin-doodle-2.png" class="driiin-doodle doodle-2" alt="" loading="lazy"><img src="driiin-doodle-3.png" class="driiin-doodle doodle-3" alt="" loading="lazy"><img src="driiin-doodle-4.png" class="driiin-doodle doodle-4" alt="" loading="lazy"></div><div class="eyebrow">01 / DRIIIN WORLD</div><h2>QUANTE<br><em>COSE.</em></h2><p data-t="worldText">Impossible cities, intricate lines, characters and unexpected connections. A universe where every detail leads somewhere else.</p><button type="button" class="manifest" id="manifestOpen" data-t="manifestOpen">READ THE MANIFESTO ↗</button></section><section id="museum" class="section"><div class="headrow"><div><div class="eyebrow">02 / THE UNDERGROUND MUSEUM</div><h2 data-t="collection">THE COLLECTION.</h2></div><p data-t="catalogText">A living archive. Explore the works or choose a collection.</p></div><div class="filters" role="group" aria-label="Artwork categories"><button type="button" class="active" data-filter="all" data-t="all">ALL WORKS</button><button type="button" data-filter="color" data-t="color">COLOR WORLDS</button><button type="button" data-filter="ink" data-t="ink">BLACK & WHITE</button><button type="button" data-filter="sold" data-t="sold">SOLD ARTWORKS</button></div><div class="counter" id="counter"></div><div class="gallery" id="gallery"></div><p class="note" data-t="note">Archive titles and availability are provisional. More images and details will be added.</p></section><section id="shop" class="shop"><div class="eyebrow" style="color:#090909">03 / DRIIIN SHOP</div><h2>TAKE THE<br>CHAOS <em>HOME.</em></h2><p data-t="shopText">Original artworks, limited prints, clothing and objects. Shop opening later; contact the artist for information.</p><div class="shopcards"><div>01 <b>ORIGINAL ART</b></div><div>02 <b>LIMITED PRINTS</b></div><div>03 <b>WEAR DRIIIN</b></div><div>04 <b>OBJECTS</b></div></div><a class="enter" style="background:#090909;color:#fff;border-color:#090909" href="https://www.instagram.com/driiin_/" target="_blank" rel="noopener" data-t="contact">CONTACT THE ARTIST ↗</a></section><section id="artist" class="about"><div class="eyebrow">04 / THE ARTIST</div><h2>BEHIND<br>THE LINES.</h2><p data-t="bio">DRIIIN is the artistic universe of Martino Cusatelli, trained in Illustration and Animation at IED Milan. His work moves between intricate ink drawings, mixed media and imaginary worlds.</p><a href="https://www.instagram.com/driiin_/" target="_blank" rel="noopener">INSTAGRAM ↗</a></section></main><footer class="footer"><strong>DRIIIN®</strong><span>© <span id="year"></span> DRIIIN</span><a href="#home">↑ TOP</a></footer><dialog class="detail" id="detail">
+</section><section id="world" class="intro"><div class="driiin-doodles v16-inkfield" aria-hidden="true"><div class="v16-doodle v16-doodle-1" style="--x:81%;--y:11%;--w:190px;--rot:-8deg;--dur:14s;--delay:-0.0s;--dx:16px;--dy:12px"><img src="v16-scale.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-2" style="--x:91%;--y:65%;--w:115px;--rot:8deg;--dur:19s;--delay:-2.7s;--dx:-24px;--dy:-18px"><img src="v16-snowman.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-3" style="--x:61%;--y:8%;--w:112px;--rot:-12deg;--dur:17s;--delay:-5.4s;--dx:32px;--dy:-24px"><img src="v16-witch.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-4" style="--x:78%;--y:43%;--w:115px;--rot:10deg;--dur:21s;--delay:-8.1s;--dx:-40px;--dy:30px"><img src="v16-telephone.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-5" style="--x:5%;--y:74%;--w:120px;--rot:-9deg;--dur:18s;--delay:-10.8s;--dx:16px;--dy:-36px"><img src="v16-spider.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-6" style="--x:46%;--y:85%;--w:88px;--rot:12deg;--dur:16s;--delay:-13.5s;--dx:-24px;--dy:-12px"><img src="v16-ghost.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-7" style="--x:61%;--y:67%;--w:145px;--rot:-5deg;--dur:23s;--delay:-16.2s;--dx:32px;--dy:18px"><img src="v16-machine.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-8" style="--x:94%;--y:24%;--w:115px;--rot:9deg;--dur:20s;--delay:-18.9s;--dx:-40px;--dy:-24px"><img src="v16-tickets.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-9" style="--x:34%;--y:3%;--w:108px;--rot:-13deg;--dur:22s;--delay:-21.6s;--dx:16px;--dy:-30px"><img src="v16-flower.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-10" style="--x:18%;--y:93%;--w:175px;--rot:7deg;--dur:25s;--delay:-24.3s;--dx:-24px;--dy:36px"><img src="v16-stairs.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-11" style="--x:47%;--y:60%;--w:125px;--rot:-8deg;--dur:24s;--delay:-27.0s;--dx:32px;--dy:-12px"><img src="v16-building.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-12" style="--x:72%;--y:90%;--w:105px;--rot:12deg;--dur:18s;--delay:-29.7s;--dx:-40px;--dy:-18px"><img src="v16-phone.png" alt="" loading="lazy" decoding="async"></div><div class="v16-doodle v16-doodle-13" style="--x:100%;--y:88%;--w:140px;--rot:-7deg;--dur:26s;--delay:-32.4s;--dx:16px;--dy:24px"><img src="v16-arches.png" alt="" loading="lazy" decoding="async"></div></div><div class="eyebrow">01 / DRIIIN WORLD</div><h2>QUANTE<br><em>COSE.</em></h2><p data-t="worldText">Impossible cities, intricate lines, characters and unexpected connections. A universe where every detail leads somewhere else.</p><button type="button" class="manifest" id="manifestOpen" data-t="manifestOpen">READ THE MANIFESTO ↗</button></section><section id="museum" class="section"><div class="headrow"><div><div class="eyebrow">02 / THE UNDERGROUND MUSEUM</div><h2 data-t="collection">THE COLLECTION.</h2></div><p data-t="catalogText">A living archive. Explore the works or choose a collection.</p></div><div class="filters" role="group" aria-label="Artwork categories"><button type="button" class="active" data-filter="all" data-t="all">ALL WORKS</button><button type="button" data-filter="color" data-t="color">COLOR WORLDS</button><button type="button" data-filter="ink" data-t="ink">BLACK & WHITE</button><button type="button" data-filter="sold" data-t="sold">SOLD ARTWORKS</button></div><div class="counter" id="counter"></div><div class="gallery" id="gallery"></div><p class="note" data-t="note">Archive titles and availability are provisional. More images and details will be added.</p></section><section id="shop" class="shop"><div class="eyebrow" style="color:#090909">03 / DRIIIN SHOP</div><h2>TAKE THE<br>CHAOS <em>HOME.</em></h2><p data-t="shopText">Original artworks, limited prints, clothing and objects. Shop opening later; contact the artist for information.</p><div class="shopcards"><div>01 <b>ORIGINAL ART</b></div><div>02 <b>LIMITED PRINTS</b></div><div>03 <b>WEAR DRIIIN</b></div><div>04 <b>OBJECTS</b></div></div><a class="enter" style="background:#090909;color:#fff;border-color:#090909" href="https://www.instagram.com/driiin_/" target="_blank" rel="noopener" data-t="contact">CONTACT THE ARTIST ↗</a></section><section id="artist" class="about"><div class="eyebrow">04 / THE ARTIST</div><h2>BEHIND<br>THE LINES.</h2><p data-t="bio">DRIIIN is the artistic universe of Martino Cusatelli, trained in Illustration and Animation at IED Milan. His work moves between intricate ink drawings, mixed media and imaginary worlds.</p><a href="https://www.instagram.com/driiin_/" target="_blank" rel="noopener">INSTAGRAM ↗</a></section></main><footer class="footer"><strong>DRIIIN®</strong><span>© <span id="year"></span> DRIIIN</span><a href="#home">↑ TOP</a></footer><dialog class="detail" id="detail">
 <button type="button" class="close" id="close" aria-label="Close">×</button>
 <div class="detailbody">
   <div class="detailstage">
