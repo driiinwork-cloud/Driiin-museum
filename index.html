@@ -489,6 +489,42 @@ dialog.detail .close { position:absolute !important; top:calc(env(safe-area-inse
 @media (prefers-reduced-motion:reduce) {
  #world.intro .v16-doodle {animation:none !important;transform:rotate(var(--rot)) !important;}
 }
+
+/* V17 — header immersivo: fascia piena solo all'inizio, poi navigazione sospesa */
+body {padding-top:74px;}
+header.top {
+ position:fixed !important;top:0;left:0;right:0;z-index:80;
+ height:74px !important;min-height:0 !important;
+ background:rgba(8,9,13,.94) !important;border-bottom:1px solid rgba(255,255,255,.13) !important;
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ transition:height .5s ease,background .5s ease,border-color .5s ease,padding .5s ease,backdrop-filter .5s ease;
+}
+header.top.v17-floating {
+ height:48px !important;
+ padding-top:0 !important;padding-bottom:0 !important;
+ background:transparent !important;border-color:transparent !important;
+ backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+}
+header.top .brand {white-space:nowrap;transition:font-size .45s ease,color .3s ease,opacity .3s ease;text-shadow:0 1px 10px #0007;}
+header.top .nav a,header.top .smallbtn {transition:color .3s ease,opacity .3s ease,border-color .3s ease,background .3s ease;}
+header.top.v17-floating .brand {font-size:21px !important;letter-spacing:-1.4px;}
+header.top.v17-floating .nav {gap:clamp(10px,1.5vw,24px);}
+header.top.v17-floating .nav a {opacity:.8;text-shadow:0 1px 9px #0008;}
+header.top.v17-floating .smallbtn {padding:7px 8px;border-color:transparent !important;opacity:.76;background:transparent !important;text-shadow:0 1px 9px #0008;}
+header.top.v17-floating:hover .nav a,header.top.v17-floating:hover .smallbtn {opacity:1;}
+header.top.v17-light .brand,header.top.v17-light .nav a,header.top.v17-light .smallbtn {color:#141414 !important;text-shadow:0 1px 8px #fffd !important;}
+header.top.v17-light .nav a:hover {color:#a41469 !important;}
+header.top.v17-floating .brand,header.top.v17-floating .nav a,header.top.v17-floating .smallbtn {filter:drop-shadow(0 1px 3px #0004);}
+@media(max-width:900px) {
+ body {padding-top:112px;}
+ header.top {height:112px !important;min-height:0 !important;flex-wrap:wrap;padding:12px 4vw !important;align-content:center;row-gap:9px;}
+ header.top .nav {order:3;width:100%;justify-content:space-between;gap:7px;}
+ header.top.v17-floating {height:70px !important;padding:5px 4vw !important;row-gap:2px;}
+ header.top.v17-floating .brand {font-size:20px !important;}
+ header.top.v17-floating .nav a {font-size:9px !important;letter-spacing:.7px;}
+ header.top.v17-floating .smallbtn {font-size:9px !important;padding:4px !important;}
+}
+@media(prefers-reduced-motion:reduce) {header.top,header.top * {transition:none !important;}}
 </style></head><body><div id="driiin-opening" role="presentation"><div class="opening-grain"></div>
 <div class="v14-lightfield" aria-hidden="true">
   <div class="v14-beam beam-a"><img src="art-01.webp" alt=""></div>
@@ -643,4 +679,26 @@ let lang=localStorage.getItem('driiin-language')==='it'?'it':'en',filter='all',s
  function onScroll(){if(!pending){pending=true;requestAnimationFrame(paint)}}
  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll,{passive:true});paint();
 })();
-</script></body></html>
+</script>
+<script>
+/* V17: keep navigation accessible while letting the artwork take the whole screen */
+(function(){
+ const bar=document.querySelector('header.top'), world=document.getElementById('world');
+ if(!bar)return;
+ let queued=false;
+ function update(){
+   queued=false;
+   const y=window.scrollY||document.documentElement.scrollTop||0;
+   bar.classList.toggle('v17-floating',y>95);
+   if(world){
+     const r=world.getBoundingClientRect();
+     bar.classList.toggle('v17-light',y>95 && r.top<55 && r.bottom>35);
+   }
+ }
+ function schedule(){if(!queued){queued=true;requestAnimationFrame(update);}}
+ window.addEventListener('scroll',schedule,{passive:true});
+ window.addEventListener('resize',schedule,{passive:true});
+ update();
+})();
+</script>
+</body></html>
