@@ -1,4 +1,5 @@
-DRIIIN MUSEUM V17 — TESTATA IMMERSIVA
-Carica index.html nel repository sostituendo il precedente.
-I 13 PNG v16 inclusi sono invariati: non serve ricaricarli se già presenti.
-In alto: fascia nera. Scorrendo: fascia scompare e logo/menu restano sospesi, con contrasto adattato alla sezione bianca.
+DRIIIN MUSEUM V18
+Carica index.html e shop.html nella cartella principale GitHub. I 13 file v16-*.png sono inclusi come copia, ma non occorre ricaricarli se già presenti.
+Ordine: home, world, shop verde, artist, museum.
+Le quattro categorie portano a shop.html#originals / #prints / #clothing / #objects.
+ATTENZIONE: questa è una vetrina funzionante con richiesta informazioni via Instagram, NON un checkout: per incassare online serviranno prodotti, prezzi, spedizioni e un sistema di pagamento.
